@@ -723,6 +723,7 @@ public class JmxUtils {
 		clean = clean.replace(" ", "");
 		clean = clean.replace("\"", "");
 		clean = clean.replace("'", "");
+		clean = clean.replace("|", ".");
 		return clean;
 	}
 
@@ -751,10 +752,10 @@ public class JmxUtils {
 			String result = getTypeNameValue(key, tokens);
 			if (result != null) {
 				sb.append(result);
-				sb.append("_");
+				sb.append("|");
 			}
 		}
-		return StringUtils.chomp(sb.toString(), "_");
+		return StringUtils.chomp(sb.toString(), "|");
 	}
 
 	/**
@@ -775,7 +776,7 @@ public class JmxUtils {
 	 * @return the concated type name values
 	 */
 	public static String getConcatedTypeNameValues(Query query, List<String> typeNames, String typeName) {
-		Set<String> queryTypeNames = query.getTypeNames();
+		List<String> queryTypeNames = query.getTypeNames();
 		if (queryTypeNames != null && queryTypeNames.size() > 0) {
 			List<String> allNames = new ArrayList<String>(queryTypeNames);
 			for (String name : typeNames) {

@@ -33,7 +33,7 @@ public class Query {
 	private List<String> keys;
 	private List<OutputWriter> outputWriters;
 	private List<Result> results;
-	private Set<String> typeNames;
+	private List<String> typeNames;
 
 	public Query() {
 	}
@@ -82,7 +82,7 @@ public class Query {
 		return resultAlias;
 	}
 
-	public void setTypeNames(Set<String> typeNames) {
+	public void setTypeNames(List<String> typeNames) {
 		this.typeNames = typeNames;
 	}
 
@@ -90,13 +90,13 @@ public class Query {
 	 * The list of type names used in a JMX bean string when querying with a
 	 * wildcard which is used to expose the actual type name value to the key
 	 * string. e.g. for this JMX name
-	 * 
+	 *
 	 * typeName=name=PS Eden Space,type=MemoryPool
-	 * 
+	 *
 	 * If you add a typeName("name"), then it'll retrieve 'PS Eden Space' from
 	 * the string
 	 */
-	public Set<String> getTypeNames() {
+	public List<String> getTypeNames() {
 		return typeNames;
 	}
 
